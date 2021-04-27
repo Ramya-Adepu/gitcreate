@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <body>
+  
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+      class Hello extends React.Component {
+        render() {
+          return (
+            <form>
+              <h3>Enter your weight and height below.</h3>
+              <label for="number1">Weight</label>
+              <input type="number" id="number1"/><p>Kg</p>
+              <label for="number2">Height</label>
+              <input type="number" id="number1"/><p>ft</p>
+              <button type="text">+</button><button type="text">-</button><button type="text"></button><button type="text">+</button>
+            </form>
+          )
+        }
+      }
+
+      ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+    </script>
+  </body>
+</html>

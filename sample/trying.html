@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <title>Sample</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        
+    <body>
+        <div id="root"></div>
+
+    <script type="text/babel">
+        class MyForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state={
+                    username:"",
+                    password:"",
+                    phonenumber:"",
+                    dateOfBirth:"",
+                }
+                this.handleSubmit=this.handleSubmit.bind(this)
+            }
+            usernamehandler=(event)=>{
+                this.setState({username: event.target.value})
+            }
+            passwordhandler=(event)=>{
+                this.setState({password: event.target.value})
+            }
+            phonenumberhandler=(event)=>{
+                this.setState({phonenumber: event.target.value})
+            }
+            dateOfBirthhandler=(event)=>{
+                this.setState({dateOfBirth: event.target.value})
+            }
+            handleSubmit=(event)=>{
+                alert(`${this.state.username} registered successfully`)
+                this.setState({
+                    username="",
+                    password="",
+                    dateOfBirth="",
+                    phonenumber="",
+                })
+            event.preventDefault()
+            }
+            
+            render(){            
+                return(
+                    <div>
+                        <form onsubmit={this.handleSubmit}>
+                            <div>
+                                <label htmlfor="username">Username </label><br></br>
+                                <input type="text" value={this.state.username} onChange={this.state.usernamehandler} name="username" id="username"/>
+                            </div>
+                            <div>
+                                <label htmlfor="password">password </label><br></br>
+                                <input type="password"  value={this.state.password} onChange={this.state.passwordhandler} name="password" id="password"/>
+                            </div>
+                            <div>
+                                <label htmlfor="phonenumber">phonenumber </label><br></br>
+                                <input type="text"  value={this.state.phonenumber} onChange={this.state.phonenumberhandler} name="phonenumber" id="phonenumber"/>
+                            </div>
+                            <div>
+                                <label htmlfor="dateOfBirth">date of birth </label><br></br>
+                                <input type="text"  value={this.state.dateOfBirth} onChange={this.state.dateOfBirthhandler} name="dateOfBirth" id="dateOfBirth"/>
+                            </div>
+                            <input type="submit" value="submit"/>
+                        </form>   
+                    </div>
+                )
+            }
+        }
+
+    
+            ReactDOM.render(<MyForm/>, document.getElementById('root'));
+        </script>
+    </body>
+</html>

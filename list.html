@@ -1,0 +1,88 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+	<style>
+		input{
+		 padding:5px;
+		 margin:5px;
+		 
+		}
+		h1 {
+			text-align: center;
+			background: #4caf50;
+			margin: 10px;
+			padding: 7px;
+		}
+		button{ padding:5px; margin:5px;}
+		
+		#gold{
+			text-align:center;
+			margin-top:50px;
+		}
+		
+		button:hover{
+			background-color:black !important;
+		}
+		
+	</style>
+		
+</head>
+<body>
+	<div id="app"></div>
+</body>
+
+<script type="text/babel">
+
+	class User extends React.Component{
+		constructor(props){
+			super(props);	
+			this.state = {users:['test1', 'test2']};
+		}
+		
+		render(){ 
+			return(
+				<div>
+					<h1 style={{backgroundColor: "lightblue"}}>Manage Users</h1>
+					<input type='text' name='uname'  id="uname" placeholder='enter user name' />
+					<button onClick={this.addtoList} style={{backgroundColor: "green", padding:'5px', border:'1px solid green', color:'white'}} >Add</button>
+					<div><h2>Added Users</h2></div>
+					<table>
+						<thead><tr><td>Name</td><td>action</td></tr></thead>
+						<tbody>
+						{
+							this.state.users.map((usr) => 
+								<tr><td>{usr}</td><td><button>Delete</button></td></tr>
+							)
+						}
+						</tbody>						
+					</table>
+				</div>				
+			); 
+		}
+		
+		addtoList = () =>{
+			const uname = document.querySelector("#uname").value;
+			this.setState({users:[...this.state.users,uname]});
+			console.log(this.state.users);
+		}
+	}
+	
+	class App extends React.Component{
+		render(){
+			return(
+				<div>
+					<User/>
+				</div>
+			);
+		}
+	}
+
+	
+	ReactDOM.render(<App/>, document.querySelector('#app'));		
+</script>
+
+</html>

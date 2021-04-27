@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="agecalcu"></div>
+    </body>
+    <script type="text/babel">
+        class Calculator  extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                        year:2021,
+                        month:3,
+                        date:30
+                };
+            }
+            render(){
+                return(
+                    <div>
+                        <input type="Number" name="year" placeholder="year"/>
+                        <input type="Number" name="month" placeholder="month"/>
+                        <input type="Number" name="date"  placeholder="date"/>
+                        <button onClick={this.Calculator}>age</button>
+                        <h2 id="result"></h2>
+                    </div>
+                );
+            }
+
+            Calculator=()=>{
+                var year=document.getElementsByName("year")[0].value;
+                var month=document.getElementsByName("month")[0].value;
+                var date=document.getElementsByName("date")[0].value;
+                // document.getElementById("result").innerHTML=(2021-year)+" years "+(5-month)+" months "+(date);
+                if(year<this.state.year){
+                    var y=this.state.year-year;
+                    if(month>this.state.month){
+                        var m=month-this.state.month;
+                        if(date>this.state.date){
+                            var d=date-this.state.day;
+                            document.getElementById("result").innerHTML=y+" years "+m+"  months "+d;
+                        }
+                        else{
+                            document.getElementById("result").innerHTML=y+" years "+(m-1)+"  months "+this.state.date;
+                        }
+                    }
+                    else{
+                        document.getElementById("result").innerHTML=(y-1)+" years "+this.state.months+"  months "+this.state.date;
+                    }
+
+                }
+                else{
+                    document.getElementById("result").innerHTML="Enter Correct details";
+                }
+
+            }
+        }
+
+        ReactDOM.render(<Calculator/>, document.getElementById("agecalcu"));
+
+    </script>
+</html>

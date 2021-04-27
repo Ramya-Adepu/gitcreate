@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>Todo</title>
+    
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 33%;
+            }
+
+
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="root"></div>
+    </body>
+      <script type="text/babel">
+        class Todo extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={tasks:[], input:""};
+            }
+
+            render(){
+                const mystyle={
+                    color:"black",
+                    border: "green; border-width:5px; border-style:solid;",
+                    backgroundColor:"DarkOrange",
+                    padding:"10px",
+                    fontFamily:"Arial",
+                    textAlign:"center",
+                };
+                const intp={
+                   backgroundColor:"Yellow",
+                   width:"50px",
+                   border:"15px solid green",
+                   padding:"50px",
+                   paddingLeft:"200px",
+                   margin:"20px", 
+                //    textAlign:"center"
+
+                }
+                const main={
+                    width:"40%",
+                    border:"solid",
+                    // width:"30%",
+                    // align:"center"
+                    align:"center",
+                    border:"1px"
+                    
+                }
+
+                return(
+                    <div>
+                        <h1 style={mystyle}>To Do List</h1>
+                        <div style={main}>
+                            <input type="text" onChange={this.handleChange.bind(this)} name="todotasks" id="todotasks" value={this.state.input} placeholder="Add your Task"/>
+                            <button type="reset" onClick={this.update}>ADD</button>
+                            
+                            <h2>No of tasks is {this.state.tasks.length}</h2> 
+                            <table id="customers">
+                                <tr>
+                                    <th>ToDoTasks</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                <tbody>
+                                {
+                                    this.state.tasks.map((tas, index) =>
+                                    <tr key={index}>
+                                        <td>{tas}</td>
+                                        <td><button id="delete"value={index} onClick={this.del}>delete</button></td>
+                                    </tr>
+                                    )
+                                }
+                                </tbody>
+                            </table> 
+                            
+                        </div>
+
+                    </div>
+
+                ); 
+            }
+            handleChange=(event)=>{
+                var input=event.targe.value;
+                this.setState({input:input})
+            }
+
+            // edit=(eve)=>{
+
+            // }
+
+            update=(eve)=>{
+                const task=document.querySelector("#todotasks").value;
+                    this.setState({tasks:[...this.state.tasks, task]});
+                    var input=eve.target.value="";
+                    this.setState({input:input})
+                    eve.preventDefault();
+                
+                
+                else{
+                    <h2>Enter task</h2>
+                }
+            }
+                
+
+            
+            del=(ele)=>{
+                // alert(ele.target.value);
+                const r=ele.target.value;
+                const v=this.state.tasks;
+                const newlist=this.state.tasks.splice(r, 1);
+                this.setState({tasks: this.state.tasks});
+                console.log(newlist)
+            }
+        }
+
+        // class Extra extends React.Component{
+        //     render(){
+        //         return(
+        //             <div>
+        //                 <Todo/>
+        //             </div>
+        //         );
+        //     }
+
+        // }
+
+        ReactDOM.render(<Todo/>, document.querySelector('#root'));
+
+      </script>
+
+</html>

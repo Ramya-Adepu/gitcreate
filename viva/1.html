@@ -1,0 +1,450 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+   
+    <style>
+        
+    </style>
+   
+   
+   
+    </head>
+    <body>
+    <div id="mydiv" style="padding: 2%;"></div>
+    
+
+    <script type="text/babel">
+        class Hello extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+Kgs to Pounds
+<div class="card text-center"><br/>
+        <div>
+            <input  onChange={this.changeValue}  id="#" placeholder="Kgs to Pounds" value={this.state.value}/>
+            <button  onClick={this.converter_kgs_to_pounds} > In Pounds</button> <br/> <br/>    
+            <button id="#1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>        
+</div>
+
+</div>
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_kgs_to_pounds=(event)=>{
+                // var i= document.getElementById("#").value;
+                // i=parseFloat(i)
+                var t=2.20462*this.state.value
+                console.log(t)
+                document.getElementById("#1").innerHTML=t;
+            }     
+            
+        }
+
+        class Hello1 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+            meters to yards
+<div class="card text-center"><br/>
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="Meters to Yards" value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} > In Yards</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+</div>
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=2.20462*i
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+
+
+
+        class Hello2 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+            Liters to Gallons
+<div class="card text-center"><br/>
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="Liters to Gallons" value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} > In Gallons</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+</div>
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=0.264172*i
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+// converting Nautical Mile to Inches.
+        class Hello3 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+          
+            
+
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="Nautical Mile to Inches" value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} > In Inches</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=72913.4*i
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+    //   implementing Calculator
+        class Hello4 extends React.Component{
+            
+            render(){
+                return(
+                <div>
+                    
+                    <label class="red"  >Inpu1:</label>
+                    <input type="text/babel"  name="first" placeholder="Enter Number1"/> <br/> <br/>
+                    <label class="red"  >Input2:</label>
+                    <input type="text/babel"  name="second" placeholder="Enter Number2"/> <br/> <br/>
+                    <button class="btn" onClick={this.addition}> + </button>
+                    <button class="btn" onClick={this.subtraction}> - </button>
+                    <button class="btn" onClick={this.multiplication}> * </button>
+                    <button class="btn" onClick={this.division}> / </button> <br/> <br/>
+                   
+                    <button id="answer1" type="button" class="btn btn-primary btn-block" >RESULT</button>
+                        
+                </div>
+                )
+            }
+            addition = () =>{
+                const first1 = document.getElementsByName("first")[0].value;
+                const second1 = document.getElementsByName("second")[0].value;
+                var first2 = parseInt(first1, 10);
+                var second2 = parseInt(second1, 10);
+                document.getElementById("answer1").innerHTML = first2+second2;
+            }
+            
+
+            subtraction = () =>{
+            const first1 = document.getElementsByName("first")[0].value;
+            const second1 = document.getElementsByName("second")[0].value;
+            document.getElementById("answer1").innerHTML = first1-second1;
+
+            }
+            
+            multiplication = () =>{
+                const first1 = document.getElementsByName("first")[0].value;
+                const second1 = document.getElementsByName("second")[0].value;
+                document.getElementById("answer1").innerHTML = first1*second1;
+            }
+            
+            division = () =>{
+                const first1 = document.getElementsByName("first")[0].value;
+                const second1 = document.getElementsByName("second")[0].value;
+                document.getElementById("answer1").innerHTML = first1/second1;
+
+
+
+            }
+
+        }
+
+// converting Celsius to Kelvin temperature.
+class Hello5 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+          
+            
+
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="Celsius to Kelvin temperature" value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} > In Temparature</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=i + 273.15
+                
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+
+        // converting Km/hr to Mile per Gallon.
+
+
+        class Hello6 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+          
+            
+
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="converting Km/hr to Mile per Gallon." value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} > converting Km/hr to Mile per Gallon.</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=i * 2.352145833
+                
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+
+
+
+
+// converting Joule to KiloJoule.
+        class Hello7 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+          
+            
+
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="converting Joule to KiloJoule." value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} > converting Joule to KiloJoule.</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=i * 0.001
+                
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+// converting Mbps to Gbps.
+        class Hello8 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    value:""
+                };
+            }   
+            render(){          
+                return(
+                    <div>
+                    
+
+
+                        
+          
+            
+
+    <div>
+            <input  onChange={this.changeValue}  id="!" placeholder="converting Mbps to Gbps." value={this.state.value}/>
+            <button  onClick={this.converter_meter_To_yards} >converting Mbps to Gbps.</button> <br/> <br/>    
+            <button id="!1" type="button" class="btn btn-primary btn-block" >RESULT</button>      
+            
+        </div>      
+</div>
+
+
+                );
+            }
+            changeValue=(event)=>{
+                this.setState({
+                    value:event.target.input
+                })
+            }
+            converter_meter_To_yards=(event)=>{
+                var i= document.getElementById("!").value;
+                i=parseFloat(i)
+                var t=i * 0.001
+                
+                console.log(t)
+                document.getElementById("!1").innerHTML=t;
+            }        
+
+        }
+
+
+
+
+
+
+
+
+        
+        ReactDOM.render(<Hello8/>, document.querySelector("#mydiv"));
+    
+    </script>
+    </body>
+</html>
+
+<!-- { <button value={this.index} onClick={this.edit}>Edit</button>} -->

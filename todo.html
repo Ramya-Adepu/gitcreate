@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>TASKS</title>
+    
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    </head>
+    
+<style>
+    *{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5byvRx7KCQamawLaptusrWrGYkUApPtB9g&usqp=CAU');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    #tdt{
+        margin-top: 10%;
+        margin-left:40%;
+      
+    }
+    table {
+        border: 3px solid lightseagreen;
+        border-collapse: collapse;
+        width: 30%;
+    }
+    ::placeholder{
+        color: black;
+        font-size: 15px;
+    }
+
+    th, td {
+        border: 2px solid lightseagreen;
+        text-align: center;
+        padding: 5px;
+        color:lightseagreen;
+    }
+
+    #todotasks{
+        font-size: 20px;
+        color: black;
+    }
+
+    #btn{
+        margin-left: 30px;
+        font-size: 20px;
+        border-radius: 4px;
+        
+    }
+    h1{
+      
+        text-align: center;
+        color:yellowgreen;
+
+    }
+    h2{
+        color:goldenrod;
+    }
+
+</style>
+
+    <body>
+        <div id="root"></div>
+    </body>
+      <script type="text/babel">
+        class Index extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={tasks:[]};
+               
+            }
+
+            render(){
+                
+                return(
+                    <div>
+                        <h1>TO-DO List</h1>
+                        <div  id="tdt">
+                            <input type="text" name="todotasks" id="todotasks"  placeholder="Add your Tasks here"/>
+                            <button id="btn" type="reset" onClick={this.addele}>ADD</button>
+                            <h2>Num of to-do's left with: {this.state.tasks.length}</h2> 
+                            <table>
+
+                                <thead><tr><th>Name</th><th>Action</th></tr></thead>
+                                <tbody>
+                                {
+                                    this.state.tasks.map((t, index) =>
+                                    <tr key={index}>
+                                        <td>{t}</td>
+                                        <td>
+                                            <button id="dlt" value={index} onClick={this.delete}>Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <button  value={index} onClick={this.updateele}>Update</button>
+                                        </td>
+                                        </tr>
+                                    )
+                                }
+                                </tbody>
+                            </table> 
+                            
+                        </div>
+
+                    </div>
+
+                ); 
+            }
+
+            addele=()=>{
+                const t=document.querySelector("#todotasks").value;
+                this.setState({tasks:[...this.state.tasks, t]});
+                console.log(this.state.list);                
+                document.getElementsByName("todotasks")[0].value="";
+            }
+
+           
+            delete=(ele)=>{
+                const r=ele.target.value;
+                const newlist=this.state.tasks.splice(r, 1);
+                this.setState({tasks: this.state.tasks});
+                console.log(newlist)
+            }
+            updateele=(ele)=>{
+                const r=ele.target.value;
+                const newlist=this.state.tasks.splice(r, 1);
+                this.setState({tasks: this.state.tasks});
+                const t = document.querySelector("#todotasks").value;
+                const one=this.state.tasks.splice(r, 0, t);
+			    this.setState({tasks: this.state.tasks});
+                document.getElementsByName("todotasks")[0].value="";}
+
+        }
+
+
+        ReactDOM.render(<Index/>, document.querySelector('#root'));
+
+      </script>
+
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+	<style>
+		input{
+		 padding:5px;
+		 margin:5px;
+		 
+		}
+		h1 {
+			text-align: center;
+			background: #4caf50;
+			margin: 10px;
+			padding: 7px;
+		}
+		button{ padding:5px; margin:5px;}
+		
+		#gold{
+			text-align:center;
+			margin-top:50px;
+		}
+		
+		button:hover{
+			background-color:black !important;
+		}
+		
+	</style>
+		
+</head>
+<body>
+	<div id="app"></div>
+</body>
+
+<script type="text/babel">
+
+	class GoldLoan extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {amount:props.amount, weight:props.weight, message:'', perGram:props.perGram};			
+		}
+		
+		render(){ 
+			return(
+				<div id='gold'>
+					<h1 style={{backgroundColor: "lightblue"}}>GoldLoan Calculator</h1>
+					<input type='number' onChange={this.setWeight} name='weight' value={this.state.weight} placeholder='enter weight' /><br/>
+					<input type='number' onChange={this.setAmount} name='amount' value={this.state.amount} placeholder='enter amount' /><br/>
+					<button onClick={this.checkEligibility} style={{backgroundColor: "green", padding:'5px', border:'1px solid green', color:'white'}} >Check Eligibility</button>
+					<div><h2>{this.state.message}</h2></div>
+				</div>				
+			); 
+		}
+		
+		setWeight = (ele) => {
+			//const w = document.getElementsByName('weight')[0].value;
+			this.setState({weight:ele.target.value});
+		}
+		
+		setAmount = (ele) => {
+			this.setState({amount:ele.target.value});
+		}
+		
+		checkEligibility = () => {
+			if(this.state.weight>0 && this.state.amount>0){
+				if((this.state.perGram*this.state.weight)>=this.state.amount){
+					this.setState({message:"You are Eligible"});
+				}
+				else{
+					this.setState({message:"You are not Eligible"});
+				}
+			}
+			else{
+				this.setState({message:"You entered wrong values"});
+			}
+		}
+	}
+	
+	class App extends React.Component{
+		render(){
+			return(
+				<div>
+					<GoldLoan weight='1' amount='1800' perGram='1800'/>
+					<GoldLoan weight='1' amount='2000' perGram='2000'/>
+				</div>
+			);
+		}
+	}
+
+	
+	ReactDOM.render(<App/>, document.querySelector('#app'));		
+</script>
+
+</html>

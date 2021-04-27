@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>Todo</title>
+    
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-image:url('images/background.jpg');
+                height:500px;
+                /* width: 50px; */
+                background-position: center;
+                background-size: cover;
+                
+            }
+
+            .main{
+                background-color: #f364c3;
+                min-height: 500px;
+                width:600px;
+                margin:40px auto;
+
+
+            }
+
+            input{
+                background-color: rgb(27, 112, 137);
+                border:0;
+                width: 200px;
+                height:50px;
+                padding:0 20px;
+                margin:20px;
+                font-size:18px ;
+                border-radius: 10px;
+                color:#fff;
+            }
+
+            input::placeholder{
+                color:rgb(255, 255, 255, 0.5);
+            }
+            input:focus, #button:focus{
+                outline:none;
+
+            }
+            .inbutton button{
+                height:50px;
+                width:80px;
+                border-radius: 5px;
+                border:0;
+                background-color: rgb(241, 195, 66);
+                cursor:pointer;
+                font-weight: bolder;
+                color:#fff;
+            }
+            button:hover{
+                background-color:rgb(253, 153, 4),
+            }
+            .table{
+                font-family:Georgia, 'Times New Roman', Times, serif;
+                border-collapse:collapse;
+                width: 90%;
+                margin-left:5%
+            }
+            .table th, .table td{
+                border: 1px solid #ddd;
+                padding-left: 4px;
+            }
+
+            .del{
+                height:30px;
+                width:80px;
+                border-radius: 5px;
+                border:0;
+                background-color: rgb(241, 195, 66);
+                cursor:pointer;
+                font-weight: bolder;
+                color:#fff;
+                margin-left: 20px;
+            }
+            .edit{
+                height:30px;
+                width:80px;
+                border-radius: 5px;
+                border:0;
+                background-color: rgb(241, 195, 66);
+                cursor:pointer;
+                font-weight: bolder;
+                color:#fff;
+                margin-left: 10px;
+            }
+            .mystyle{
+                color:"black";
+                border: "green; border-width:5px; border-style:solid;";
+                background-color:rgb(231, 97, 48);
+                padding:"10px";
+                font-family:"Arial";
+                align-content:"center";
+            }
+
+            .len{
+                margin:20px;
+                font-size:18px ;
+                border-radius: 10px;
+                color:#fff;
+                text-align:"center"
+            }
+            .h1{
+                text-align: center;
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <div id="root"></div>
+    </body>
+      <script type="text/babel">
+        class Todo extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={tasks:[], 
+                };
+                
+            }
+
+            render(){
+                
+                
+                return(
+                    <div class="back">
+                        
+                        <div class="main">
+                            <h1 class="mystyle">To Do List</h1>
+                            <div class="inbutton">
+                            <input type="text"  name="todotasks" id="todotasks" placeholder="Add your Task" value={this.state.input}/>
+                            <button type="reset" onClick={this.update}>ADD</button></div>
+                            <h2 class="len">No of tasks is {this.state.tasks.length}</h2> 
+                            <table class="table">
+
+                                <thead><tr><th>NAME</th><th>ACTION</th></tr></thead>
+                                <tbody>
+                                {
+                                    this.state.tasks.map((tas, index) =>
+                                    <tr key={index}>
+                                        <td>{tas}</td>
+                                        <td><button class="del" id="delete"value={index} onClick={this.del}>DELETE</button>
+                                            <button class="edit" value={index} onClick={this.edit}>EDIT</button>
+                                        </td>
+                                    
+                                    </tr>
+                                    )
+                                }
+                                </tbody>
+                            </table> 
+                            
+                        </div>
+
+                    </div>
+
+                ); 
+            }
+            // handleChange=(event)=>{
+            //     var input=event.target.value;
+            //     this.setState({input:input})
+
+            // }
+
+            edit=(eve)=>{
+                const r=eve.target.value;
+                const nlist=this.state.tasks.splice(r, 1);
+                this.setState({tasks: this.state.tasks});
+                const inn =document.querySelector("#todotasks").value;
+                const edited=this.state.tasks.splice(r, 0, inn);
+                this.setState({tasks:this.state.tasks});
+                document.getElementsByName("todotasks")[0].value="";
+                // var input=event.target.value="";
+                // this.setState({input:input})
+                
+                // eve.preventDefault();
+            }
+
+            update=(eve)=>{
+                const task=document.querySelector("#todotasks").value;
+                // if(task!=Null){ 
+                    this.setState({tasks:[...this.state.tasks, task]});
+                // var input=event.target.value="";
+                // this.setState({input:input})
+                
+                // eve.preventDefault();
+                    document.getElementsByName("todotasks")[0].value="";
+                
+               
+            }
+
+            inClear=()=>{
+
+            }
+            del=(ele)=>{
+                // alert(ele.target.value);
+                const r=ele.target.value;
+                const v=this.state.tasks;
+                const newlist=this.state.tasks.splice(r, 1);
+                this.setState({tasks: this.state.tasks});
+                console.log(newlist)
+            }
+        }
+        
+ 
+        ReactDOM.render(<Todo/>, document.querySelector('#root'));
+
+      </script>
+
+</html>

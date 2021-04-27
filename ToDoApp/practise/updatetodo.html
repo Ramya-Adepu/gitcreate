@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <title>To list</title>
+  <style>
+      .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.d{
+    margin:20px
+}
+
+table, th, td {
+
+  border: 1px solid black;
+  margin: auto;
+}
+  </style>
+</head>
+
+<body>
+  <div id="app" />
+  <script type="text/babel">
+
+
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          tasks:[],
+          input: "",
+          period:[],
+          count:0,
+          index:-1,
+          button:"insert",
+          restore:[]
+        };
+      }
+
+
+      // componentDidMount(){
+      //   this.timer=setInterval(
+      //     ()=>this.timer(),1000
+      //   )
+      // }
+
+      // componentWillUnmount(){
+      //   clearInterval(this.timer)
+      // }
+
+
+      // timer(){
+      //   insert()
+      //   if(this.state.tasks.length>0){
+      //     let times=[...this.state.period]
+      //     for(let i=0;i<times.length;i++){
+      //       times[i]=times[i]-1
+      //     }
+      //     this.setState(state =>({
+      //       period:times
+      //     }))
+      //     while(times.includes(0)){
+      //       this.deleteTask(0)
+      //       times=[...this.state.period]
+      //     }
+      //   }
+
+      // }
+
+
+
+      // insert=()=>{
+      //   if(this.state.button === "insert"){
+      //     this.setState(state=>({
+      //       tasks:[...state.tasks,state.input],
+      //       count:state.count < 0? 0:parseInt(state.count)+1,
+      //       period:[...state.period,20],
+      //       input:""
+      //     }))
+      //   }
+      //   else{
+      //     let list=[...this.state.tasks]
+      //     var f=this.state.index
+      //     list[f]=this.state.input
+      //     this.setState({
+      //       tasks:list,
+      //       button:"insert",
+      //       input:""
+      //     })
+      //   }
+
+      // }
+
+      render() {
+        return (
+            <div class='center'>
+    <h1>Tasks:</h1> 
+    <table id="size" >
+       <thead>
+          <tr>  <th>To_Do_List</th>  </tr>
+       </thead>
+    <tbody>
+       
+   {this.state.tasks.map((task,i) =>
+<tr class="d" key={i}>
+
+   <td> {task}</td>
+   <td> {this.state.period}</td>
+   <td>
+   <button  onClick={(event)=>{this.deleteTask(event,i)}}> &#128465;</button>
+   </td>
+   <td> <button onClick={(event)=>{this.edit(event,i)}}> Edit </button> </td>
+   <td><button onClick={this.Update}> Update </button></td>
+   </tr>
+   )} <br/>   
+  
+    <div>
+    <input onChange={this.UpdateResponse} value={this.state.input}/>
+    <button onClick={this.addTask} > Add Task</button>  
+    
+     
+    </div>    
+   </tbody>
+</table>  
+<h2> Number of tasks: {this.state.tasks.length}</h2>
+<div>
+  
+  </div>
+</div>
+
+
+
+
+        );
+      }
+
+      UpdateResponse=(event)=>{
+        this.setState({
+          input:event.target.value,
+        });
+      }
+      addTask=(event)=>{
+        console.log("Hello")
+        this.setState(state=>({
+          tasks:[...state.tasks,state.input],
+          input:""
+          
+          
+
+        }));
+        
+
+      }
+      deleteTask=(event,i)=>{
+        var n=[...this.state.tasks]
+        this.state.restore=[...this.state.restore,n.splice(i,1)]
+        
+        this.setState(state=>({
+          tasks:n,
+          
+          
+          
+        }));
+        console.log(this.state.restore)
+
+      }
+
+      edit=(event,i)=>{
+        this.setState({
+          input:this.state.tasks[i],
+          index:i
+        })
+
+      }
+
+      Update=()=>{
+        var n=[...this.state.tasks]
+        n[this.state.index]=this.state.input
+        this.setState({
+          tasks:n,
+          input:""
+        })
+      }
+    }
+
+
+
+  ReactDOM.render(<App />, document.querySelector("#app"));
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>SignInUP</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+
+
+      }
+      
+    
+        input,button, div{
+          margin:5px;
+        }
+        button{
+          /* outline:none; */
+          /* display:block; */
+          background-color: black;
+          /* margin:5px; */
+          /* padding-right: 5px; */
+        }
+
+        button:hover{
+          background-color:white;
+          /* color: white; */
+        }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="SignIn" ></div>
+    <div id="SignUP"></div>
+    <div id="show"></div>
+    <script type="text/babel">
+        class Signin extends React.Component{
+            constructor(props){
+              super(props);
+              this.state={
+                  name: '',
+                  password: '',
+                  message: ''
+
+              };
+            }
+
+            render(){
+              const main={
+                  width:"100rw",
+                  minHeight:"100vh",
+                  display:"grid",
+                  placeItems:"center",
+                  backgroundColor:"rgb(52, 130, 150)"
+
+                }
+              const inner={
+                // backgroundColor:"white",
+                borderRadius:"1rem solid balck",
+              }
+                return(
+                  <div style={main}>
+                    <div style={inner}> 
+                                      
+                    
+                    <label><input onChange={this.updatename} type="text" id="name" placeholder="Name" required/></label><br/>
+                    <label><input onChange={this.updatepassword} type="password" id="password" placeholder="Password" required/></label><br/>
+                    <button onClick={this.update} id="signup" name="buttonup">Sign Up</button>
+                    <button  style={{marginLeft:"88px"}} OnClick={this.Message} id="signin" name="buttonin">Sign In</button>   
+                    <div>{this.state.message}</div>                
+                    
+                    </div>
+                  </div>
+                );
+            }
+            updatename = (event) => {
+            this.setState({name: event.target.value});      
+            // console.log(this.state.name)       
+
+            }
+
+            updatepassword = (event) => {
+                this.setState({password: event.target.value});
+
+            }
+
+            Message = () =>{
+                this.setState({
+                    message: <h2>Hello {this.state.name}!</h2>                    
+                });
+
+            }
+
+            update = () =>{
+                document.getElementById('SignIn').style.display = 'none'
+                document.getElementById('SignUP').style.display = 'block'
+                document.getElementById('name').value = ''
+                document.getElementById('password').value = ''
+
+            }
+        
+        }
+
+
+        class Signup extends React.Component{
+          constructor(props){
+            super(props);
+            this.state = {
+              Username: '',
+              Password: '',
+              mobilenumber: '',
+              DOB: '',
+              message: ''
+            }
+          }
+            render(){
+                const main={
+                  width:"100rw",
+                  minHeight:"100vh",
+                  display:"grid",
+                  placeItems:"center",
+                  backgroundColor:"rgb(52, 130, 150)"
+
+                }
+                const inner={
+                  // width:"40vm",
+                  backgroundColor:"black",
+                  // padding:"3rem 8rem",
+                  // borderRadius:"1rem",
+                  // boxShadow:"0 1rem 1rem rgba(0, 0, 0, 0.4)"
+                  borderRadius:"1rem solid balck",
+                }
+                .buttons={
+                  align:"center",
+                  padding:"5px"
+                }
+                return(
+                  <div style={main}>
+                    <div style={inner}>
+
+                    <div>
+                    
+                    <label for="Username"><input onChange={this.updateName} type="text" id="Username" placeholder="Name" required/></label><br/><br></br>
+                    <label for="Passwordd"><input onChange={this.updatePassword} type="password" id="Password" placeholder="Password" required/></label><br/><br></br>
+                    <label for="mobilenumber"><input onChange={this.updatemobilenumber} type="text" id="mobilenumber" placeholder="Contact no." required/></label><br/><br></br>                   
+                    <label for="DOB"><input onChange={this.updateDOB} type="text" id="DOB" placeholder="DOB" min="2018-01-01" max="2018-12-31" required/></label><br/><br></br>
+                    <button onClick={this.Message} id="buttonup" name="buttonup">Sign Up</button>
+                    <button style={{marginLeft:"88px"}} onClick={this.update} id="buttonin" name="buttonin">Sign In</button>   
+                    <div>{this.state.message}</div>                
+                    
+                    </div>
+                    </div>
+                  </div>
+                );
+            }
+            
+            updateName = (event) => {
+              this.setState({Username: event.target.value});
+              
+
+            }
+
+            updatePassword = (event) => {
+              this.setState({Password: event.target.value});
+
+            }
+
+            updatemobilenumber= (event) => {
+              this.setState({mobilenumber: event.target.value});
+
+            }
+
+            updateDOBirth = (event) => {
+              this.setState({DOB: event.target.value});
+
+            }
+        
+            Message = () =>{
+                this.setState({
+                    message: <h2>Welcome {this.state.Username}...</h2>
+                });
+            }
+
+            update = () =>{
+                document.getElementById('SignIn').style.display = 'block'
+                document.getElementById('SignUP').style.display = 'none'
+                document.getElementById('Username').value = ''
+                document.getElementById('Password').value = ''
+                document.getElementById('mobilenumber').value = ''
+                document.getElementById('DOB').value = ''
+            }
+        }
+        document.getElementById('SignIn').style.display = 'none'
+
+        // class Both extends React.Component{
+        //   render(){
+        //     return(
+        //           <div>
+        //             <Signup/>
+        //             <Signin/>                
+        //           </div>
+        //     );
+        //   }
+        // }
+        ReactDOM.render(<Signup />, document.querySelector("#SignUP"));
+        ReactDOM.render(<Signin />, document.querySelector("#SignIn"));
+        // ReactDOM.render(<Both/>, document.querySelector("#SignIn"));
+    </script>
+  </body>
+</html>

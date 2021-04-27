@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <title>To list</title>
+  <style>
+      .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+.body{
+    background-image: url("img.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.d{
+    margin:20px
+}
+
+table, th, td {
+
+  border: 1px solid black;
+  margin: auto;
+}
+#abc{
+float:left;
+width: 40%;
+
+background-color: #74a5aa;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2374a5aa'/%3E%3Cstop offset='1' stop-color='%23a8f3ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23b0f6ff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23b0f6ff' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2'%3E%3Cstop offset='0' stop-color='%23b0f6ff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23b0f6ff' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg fill-opacity='0.17'%3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;
+border: solid;
+border-color: rgb(68, 163, 105);
+
+}
+#ab{
+    border:solid;
+}
+#abcd{
+   
+    background-color: #7d9294;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2374a5aa'/%3E%3Cstop offset='1' stop-color='%23a8f3ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23b0f6ff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23b0f6ff' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2'%3E%3Cstop offset='0' stop-color='%23b0f6ff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23b0f6ff' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg fill-opacity='0.17'%3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;
+border: solid;
+border-color: rgb(68, 163, 105);
+    width: 20%;
+    margin-left: 20px;
+float:left;
+
+}
+  </style>
+</head>
+
+<body class="body">
+  <div id="app">
+  <script type="text/babel">
+
+
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          tasks:[],
+          input: "",
+          period:[],
+          count:0,
+          index:-1,
+          
+          restore:[]
+        };
+      }
+
+
+      render() {
+        return (
+            <div >
+    <h1>Tasks:</h1> 
+    <table id="abc">
+       <thead>
+          <tr><th>To_Do_List</th></tr>
+       </thead>
+    <tbody>
+       
+   {this.state.tasks.map((task,i) =>
+<tr class="d" key={i}>
+
+   <td> {task}</td>
+
+   <td>
+   <button  onClick={(event)=>{this.deleteTask(event,i)}}> remove</button>
+   </td>
+   <td> <button onClick={(event)=>{this.edit(event,i)}}> Edit </button> </td>
+   <td><button onClick={this.Update}> Update </button></td>
+   </tr>
+   )} <br/>   
+  
+    <div>
+    <input onChange={this.UpdateResponse} value={this.state.input}/>
+    <button onClick={this.addTask} > Add Task</button>  
+    
+     
+    </div>    
+   </tbody>
+   <h2> Number of tasks: {this.state.tasks.length}</h2>
+</table>  
+
+<div>
+<div id="abcd">
+    
+    <table >
+       
+       <thead>
+        <tr><th> Recycle Bin</th></tr>
+       </thead>
+    <tbody>
+       
+   {this.state.restore.map((task,i) =>
+<tr class="d" key={i}>
+
+   <td> {task}</td>
+
+   <td>
+   <button  onClick={(event)=>{this.delete(event,i)}}> delete</button>
+   </td>
+
+   </tr>
+   )} <br/>   
+  
+    <div>
+    
+    
+     
+    </div>    
+   </tbody>
+</table>  
+</div>
+  </div>
+
+
+  
+</div>
+
+
+
+
+        );
+      }
+      delete=(event)=>{
+        var index =event.target.value
+       
+                var tasks_list= this.state.restore.splice(index, 1);
+                this.setState({restore: this.state.restore});
+            } 
+      
+
+      UpdateResponse=(event)=>{
+        this.setState({
+          input:event.target.value,
+        });
+      }
+      addTask=(event)=>{
+        if(this.state.input==""){
+                    return;
+                }
+        this.setState(state=>({
+          tasks:[...state.tasks,state.input],
+          
+          input:""
+          
+          
+
+        }));
+        
+
+      }
+      deleteTask=(event,i)=>{
+        var n=[...this.state.tasks]
+        this.state.restore=[...this.state.restore,n.splice(i,1)]
+        
+        this.setState(state=>({
+          tasks:n,
+
+        }));
+        console.log(this.state.restore)
+
+      }
+
+      edit=(event,i)=>{
+        this.setState({
+          input:this.state.tasks[i],
+          index:i
+        })
+      }
+
+      Update=()=>{
+        var n=[...this.state.tasks]
+        n[this.state.index]=this.state.input
+        this.setState({
+          tasks:n,
+          input:""
+        })
+      }
+
+      gettasks = () => {
+			fetch('https://github.com/vinaykumar721/htmlcss/blob/main/test.json') 
+			.then(resp => resp.json())
+			.then(data => {
+				console.log(data);
+				this.setState({tasks:data});
+			});
+		}
+		
+		componentDidMount(){
+			this.gettasks();
+			
+			
+		}
+
+    }
+
+
+
+
+    
+
+
+
+  ReactDOM.render(<App />, document.querySelector("#app"));
+
+  </script>
+</body>
+
+</html>
